@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Museo Nascere</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-babia-components/dist/aframe-babia-components.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene
+      fog="type: exponential; color: #c6ddf1; density: 0.090; near: 0; far: 30"
+    >
+      <!-- Environment -->
+      <a-sky
+        src="https://cdn.glitch.global/6129616c-d685-405f-9e5a-3869316b8be0/entorno_universidad0001.jpg?v=1655202508267"
+        rotation="0 0 0"
+      ></a-sky>
+
+      <!-- Light with Animation -->
+      <a-light
+        id="animated-light"
+        type="point"
+        intensity="1.2"
+        position="0 3 0"
+        color="#c6ddf1"
+      >
+        <a-animation
+          attribute="color"
+          from="#c6ddf1"
+          to="#0099ff"
+          dur="3000"
+          repeat="indefinite"
+          direction="alternate"
+        ></a-animation>
+      </a-light>
+
+      <!-- Camera -->
+      <a-entity movement-controls="fly: true" position="0 0 4">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+        <a-entity laser-controls="hand: right"></a-entity>
+      </a-entity>
+
+      <!-- Cristales -->
+      <a-assets>
+        <a-asset-item
+          id="window"
+          src="assets/cristales_bacterias.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-entity
+        gltf-model="#window"
+        scale="1 1 1"
+        position="1 1 1"
+        rotation="0 -90 0"
+        material="color: white"
+        animation-mixer
+      ></a-entity>
+
+    </a-scene>
+  </body>
+</html>
