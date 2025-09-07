@@ -41,21 +41,20 @@
       </a-entity>
 
       <!-- Assets -->
-  <a-assets>
-    <a-asset-item id="cristal" src="./assets/cristales_bacterias.glb"></a-asset-item>
-  </a-assets>
+      <a-assets>
+        <!-- Use a relative path so it works on GitHub Pages -->
+        <a-asset-item id="door" src="./assets/modern_door.glb"></a-asset-item>
+      </a-assets>
 
-  <a-entity
-    gltf-model="src: #cristal; dracoDecoderPath: https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/libs/draco/gltf/"
-    position="0 0 -2"
-    scale="1 1 1"
-    animation-mixer>
-  </a-entity>
+      <!-- Door model -->
+      <a-entity
+        gltf-model="src: #door; dracoDecoderPath: https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+        position="0 0 -2"
+        rotation="0 0 0"
+        scale="1 1 1"
+        material="color: white"
+        animation-mixer>
+      </a-entity>
     </a-scene>
   </body>
 </html>
-
-
-
-
-
