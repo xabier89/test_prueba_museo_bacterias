@@ -41,14 +41,20 @@
       </a-entity>
 
       <!-- Assets -->
-<a-assets>
-  <a-asset-item id="cristal" src="./assets/cristales_bacterias.glb"></a-asset-item>
-</a-assets>
+  <a-assets>
+    <a-asset-item id="cristal" src="./assets/cristales_bacterias.glb"></a-asset-item>
+  </a-assets>
 
-<a-entity gltf-model="#cristal" position="0 0 -2" scale="1 1 1" animation-mixer></a-entity>
+  <a-entity
+    gltf-model="src: #cristal; dracoDecoderPath: https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/libs/draco/gltf/"
+    position="0 0 -2"
+    scale="1 1 1"
+    animation-mixer>
+  </a-entity>
     </a-scene>
   </body>
 </html>
+
 
 
 
