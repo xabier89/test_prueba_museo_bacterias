@@ -4,21 +4,16 @@
   <meta charset="utf-8" />
   <title>Museo Nascere · A-Frame</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- A-Frame core -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <!-- Extras: animation-mixer, movement-controls, etc. -->
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <a-scene
-    renderer="colorManagement: true; physicallyCorrectLights: true"
+    renderer="colorManagement: true; physicallyCorrectLights: true; toneMapping: ACESFilmic; exposure: 1.2"
     background="color: #c6ddf1"
     fog="type: exponential; color: #c6ddf1; density: 0.06"
   >
-    <!-- Assets are preloaded here; paths are RELATIVE → same-origin → no CORS -->
     <a-assets timeout="15000">
       <a-asset-item id="mdl-cristales" src="./assets/cristales_bacterias.glb"></a-asset-item>
       <a-asset-item id="mdl-paredes"   src="./assets/paredes_bacterias.glb"></a-asset-item>
@@ -26,40 +21,29 @@
       <a-asset-item id="mdl-techo"     src="./assets/techo_bacterias.glb"></a-asset-item>
     </a-assets>
 
-    <!-- Lights -->
-    <a-entity light="type: ambient; intensity: 0.6"></a-entity>
-    <a-entity light="type: directional; intensity: 0.8" position="2 4 3"></a-entity>
+    <!-- Modern light rig -->
+    <a-entity light="type: ambient; intensity: 0.25"></a-entity>
+    <a-entity light="type: hemisphere; intensity: 0.7; color: #ffffff; groundColor: #556677"></a-entity>
+    <a-entity light="type: directional; intensity: 2.2" position="2 4 3"></a-entity>
 
-    <!-- Ground helper (can remove if your 'suelo' is the actual floor) -->
+    <!-- Ground helper -->
     <a-entity geometry="primitive: circle; radius: 20" rotation="-90 0 0"
               material="color: #e9eef5; roughness: 1; metalness: 0"></a-entity>
 
-    <!-- Models (scale/position are guesses; tweak as needed) -->
-    <a-entity gltf-model="#mdl-suelo"   position="-12 0 0"    scale="750 750 750"  ></a-entity>
-    <a-entity gltf-model="#mdl-paredes" position="-12 0 0"    scale="750 750 750"  ></a-entity>
-    <a-entity gltf-model="#mdl-techo"   position="-12 0 10"    scale="750 750 750"  ></a-entity>
-    <a-entity gltf-model="#mdl-cristales"
-              position="-12 0 0" scale="750 750 750"
-              animation-mixer></a-entity>
+    <!-- Models -->
+    <a-entity gltf-model="#mdl-suelo"   position="-12 0 0"  scale="750 750 750"></a-entity>
+    <a-entity gltf-model="#mdl-paredes" position="-12 0 0"  scale="750 750 750"></a-entity>
+    <a-entity gltf-model="#mdl-techo"   position="-12 0 10" scale="750 750 750"></a-entity>
+    <a-entity gltf-model="#mdl-cristales" position="-12 0 0" scale="750 750 750" animation-mixer></a-entity>
 
     <!-- Camera + controls -->
     <a-entity id="rig" position="0 1.6 4">
-      <a-entity camera look-controls wasd-controls
-                cursor="rayOrigin: mouse"></a-entity>
+      <a-entity camera look-controls wasd-controls cursor="rayOrigin: mouse"></a-entity>
     </a-entity>
 
-    <!-- Debug HUD (optional) -->
     <a-entity id="debug" position="0 2 -2" text="value: ; align: center"></a-entity>
   </a-scene>
 
   <script src="./script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
